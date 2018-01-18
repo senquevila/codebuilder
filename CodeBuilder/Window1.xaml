@@ -1,0 +1,305 @@
+﻿<Window x:Class="CodeBuilder.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="HelpBuilder"       Height="550"
+        Width="700"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+	<Grid
+		Margin="5">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="Auto"></RowDefinition>
+			<RowDefinition
+				Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+		<DockPanel
+			Grid.Row="0">
+			<Menu DockPanel.Dock="Top">
+				<MenuItem Header="_File">
+					<Separator />
+					<MenuItem Header="_Salir" Click="MenuItem_Click" />
+				</MenuItem>
+			</Menu>
+		</DockPanel>
+		<TabControl
+			Grid.Row="1">
+			<TabItem
+				Header="_Form">
+				<TabControl>
+					<TabItem
+						Header="_Grid">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="Auto"></RowDefinition>
+								<RowDefinition
+									Height="*"></RowDefinition>
+							</Grid.RowDefinitions>
+							<StackPanel
+								Grid.Row="0">
+								<Label>Evento:</Label>
+								<ComboBox
+									Name="CmbEventoGrid">
+									<ComboBoxItem>Draw Column</ComboBoxItem>
+									<ComboBoxItem>Double Click</ComboBoxItem>
+								</ComboBox>
+								<Label>Tabla:</Label>
+								<TextBox
+									Name="TxtTabla"
+									Style="{StaticResource TextBoxStyle}"></TextBox>
+								<Label>Campo:</Label>
+								<TextBox
+									Name="TxtCampo"
+									Style="{StaticResource TextBoxStyle}"></TextBox>
+								<Button
+									Name="BtnGrid"
+									Background="LightGreen"
+									Style="{StaticResource ButtonStyle}"
+									Click="BtnGrid_Click">Generar</Button>
+							</StackPanel>
+							<TextBox
+								Grid.Row="1"
+								Name="MmoResultadoGrid"
+								Style="{StaticResource MemoReadOnlyStyle}">
+							</TextBox>
+						</Grid>
+					</TabItem>
+					<TabItem
+						Header="_Menu">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition
+									Height="Auto"></RowDefinition>
+								<RowDefinition
+									Height="*"></RowDefinition>
+							</Grid.RowDefinitions>
+							<StackPanel
+								Grid.Row="0">
+								<Label>Eventos:</Label>
+								<ComboBox
+									Name="CmbEventosForma">
+									<ComboBoxItem>Menu</ComboBoxItem>
+									<ComboBoxItem>Vistazo</ComboBoxItem>
+								</ComboBox>
+								<Label>Forma (Frm):</Label>
+								<TextBox
+									Name="TxtForma"
+									Style="{StaticResource TextBoxStyle}"></TextBox>
+								<Button
+									Name="BtnGenerarForma"
+									Background="LightGreen"
+									Style="{StaticResource ButtonStyle}"
+									Click="BtnGenerarForma_Click">Generar</Button>
+							</StackPanel>
+							<TextBox
+								Grid.Row="1"
+								Name="MmoResultadoMenu"
+								Style="{StaticResource MemoReadOnlyStyle}"></TextBox>
+						</Grid>
+					</TabItem>
+				</TabControl>
+			</TabItem>
+			<TabItem
+				Header="_TQuery">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="Auto"></RowDefinition>
+						<RowDefinition
+							Height="*"></RowDefinition>
+					</Grid.RowDefinitions>
+					<StackPanel
+						Grid.Row="0">
+						<Label>Eventos:</Label>
+						<ComboBox
+							Name="CmbEventosTQuery">
+							<ComboBoxItem>Before Post</ComboBoxItem>
+							<ComboBoxItem>Before Delete</ComboBoxItem>
+						</ComboBox>
+						<Label>Tabla:</Label>
+						<TextBox
+							Name="TxtTabla2"
+							Style="{StaticResource TextBoxStyle}"></TextBox>
+						<Button
+							Name="BtnGenerarTQuery"
+							Background="LightGreen"
+							Style="{StaticResource ButtonStyle}"
+							Click="BtnGenerarTQuery_Click">Generar</Button>
+					</StackPanel>
+					<TextBox
+						Grid.Row="1"
+						Name="MmoResultadoTQuery"
+						Style="{StaticResource MemoReadOnlyStyle}"></TextBox>
+				</Grid>
+			</TabItem>
+			<TabItem
+				Header="_TODO">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition
+							Height="Auto"></RowDefinition>
+						<RowDefinition
+							Height="*"></RowDefinition>
+					</Grid.RowDefinitions>
+					<StackPanel
+						Grid.Row="0">
+						<WrapPanel>
+							<Label
+								VerticalAlignment="Center">Ruta del Proyecto:</Label>
+							<TextBox
+								Name="TxtRuta"
+								Width="455"
+								Height="30"
+								VerticalContentAlignment="Center"
+								Style="{StaticResource ReadOnlyTxtStyle}"></TextBox>
+							<Button
+								Name="BtnAbrirDirectorio"
+								Width="80"
+								Style="{StaticResource ButtonStyle}"
+								Click="BtnAbrirDirectorio_Click">Abrir</Button>
+						</WrapPanel>
+						<WrapPanel>
+							<Label
+								VerticalAlignment="Center">Incluir(nombre):</Label>
+							<TextBox
+								Style="{StaticResource TextBoxStyle}"
+								Width="180"
+								Name="TxtInclusiones"></TextBox>
+							<Label
+								VerticalAlignment="Center">Excluir(contenido):</Label>
+							<TextBox
+								Style="{StaticResource TextBoxStyle}"
+								Width="180"
+								Name="TxtExclusiones"></TextBox>
+							<Button
+								Name="BtnBuscarTodo"
+								Background="LightGreen"
+								Width="80"
+								Style="{StaticResource ButtonStyle}"
+								Click="BtnBuscarTodo_Click">Buscar</Button>
+						</WrapPanel>
+						<WrapPanel>
+							<CheckBox
+								Name="ChkRespaldar"
+								VerticalAlignment="Center">Respaldar archivos</CheckBox>
+							<Button
+								Name="BtnEliminarTodo"
+								Width="80"
+								Background="Red"
+								Foreground="White"
+								Style="{StaticResource ButtonStyle}"
+								Click="BtnEliminarTodo_Click">Eliminar</Button>
+							<Button
+								Name="BtnRestaurarTodo"
+								Width="80"
+								Background="Green"
+								Foreground="White"
+								Style="{StaticResource ButtonStyle}"
+								Click="BtnRestaurarTodo_Click">Restaurar</Button>
+						</WrapPanel>
+					</StackPanel>
+					<ListView
+						Grid.Row="1"
+						Name="LstApariciones">
+						<ListView.View>
+							<GridView>
+								<GridViewColumn
+									Header="Archivo"
+									Width="350"
+									DisplayMemberBinding="{Binding Archivo}"></GridViewColumn>
+								<GridViewColumn
+									Header="Inicio"
+									Width="40"
+									DisplayMemberBinding="{Binding Inicio}"></GridViewColumn>
+								<GridViewColumn
+									Header="Final"
+									Width="40"
+									DisplayMemberBinding="{Binding Final}"></GridViewColumn>
+								<GridViewColumn
+									Header="Contenido"
+									Width="250"
+									DisplayMemberBinding="{Binding Contenido}"></GridViewColumn>
+							</GridView>
+						</ListView.View>
+					</ListView>
+				</Grid>
+			</TabItem>
+			<TabItem Header="_Correo">
+				<TabControl>
+					<TabItem Header="_Imagenes">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition Height="Auto"></RowDefinition>
+								<RowDefinition Height="*"></RowDefinition>
+							</Grid.RowDefinitions>
+							
+							<Grid.Resources>
+								<Style TargetType="Label">
+									<Setter Property="Width" Value="100"></Setter>
+									<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+								</Style>
+								
+								<Style TargetType="Button">
+									<Setter Property="Margin" Value="5,5,5,5"></Setter>
+									<Setter Property="Height" Value="30"></Setter>
+									<Setter Property="Width" Value="80"></Setter>
+								</Style>
+								
+								<Style TargetType="TextBox">
+									<Setter Property="Height" Value="30"></Setter>
+									<Setter Property="Width" Value="400"></Setter>
+									<Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+								</Style>
+							</Grid.Resources>
+							
+							<WrapPanel Grid.Row="0">
+								<Label>Ruta:</Label>
+								<TextBox
+									Name="TxtRutaPlantilla"
+									Height="30"
+									Width="400"									
+									VerticalContentAlignment="Center"
+									Style="{StaticResource ReadOnlyTxtStyle}"></TextBox>
+								<Button
+									Name="BtnAbrirDirPlantilla"
+									Width="60"
+									Click="BtnAbrirDirPlantilla_Click">Abrir</Button>
+							</WrapPanel>
+							<WrapPanel
+								Grid.Row="1"
+								Margin="0,5">
+								<Label>Enlace:</Label>
+								<TextBox Name="TxtEnlace"></TextBox>
+							</WrapPanel>
+							<WrapPanel
+								Grid.Row="2"
+								Margin="0,5">
+								<Label>Imagen:</Label>
+								<TextBox Name="TxtImg"></TextBox>
+							</WrapPanel>
+							<WrapPanel Grid.Row="3">
+								<Button
+									Name="BtnPlantilla"
+									Click="BtnPlantilla_Click">Generar</Button>
+								<Button
+									Name="BtnCopiarPlantilla"
+									Click="BtnCopiarPlantilla_Click">Copiar</Button>
+								<Button
+									Name="BtnLimpiarPlantilla"
+									Click="BtnLimpiarPlantilla_Click">Limpiar</Button>
+							</WrapPanel>
+							<TextBox
+								Grid.Row="4"
+								Name="TxtCorreoPlantilla"
+								Style="{StaticResource ReadOnlyTxtStyle}"></TextBox>
+						</Grid>
+					</TabItem>
+				</TabControl>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>
